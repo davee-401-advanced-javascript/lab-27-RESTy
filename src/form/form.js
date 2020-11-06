@@ -1,6 +1,8 @@
 import React from 'react';
+import superagent from 'superagent';
 
 import './form.scss';
+
 
 class Form extends React.Component {
 	constructor(props) {
@@ -8,17 +10,31 @@ class Form extends React.Component {
 		this.state = {
 			url: '',
 			method: 'get',
-			output: ''
+			result: '',
+			headers: ''
 		};
 	}
 
-	handleSubmit = (e) => {
-		e.preventDefault();
+	// async componentDidMount() {
+	// 	const response = await superagent.get(`${this.state.url}`);
+	// 	const result = response.body;
 
-		let result = `${this.state.method} ${this.state.url}`;
+	// 	console.log(result);
+	// 	this.setState({ output: result });
+	// }
+
+	handleSubmit = async (e) => {
+		e.preventDefault();
+		
+		let response = await superagent.get(`${this.state.url}`);
+
+		let resultString = JSON.stringify(response.body);
+		let headersString = JSON.stringify(response.headers);
 		this.setState({
-			output: result
+			result: resultString,
+			headers: headersString
 		});
+		console.log(this.state);
 	};
 
 	handleUrlChange = (e) => {
@@ -78,7 +94,8 @@ class Form extends React.Component {
 						<span>DELETE</span>
 					</label>
 				</form>
-				<div className="ouput">{this.state.output}</div>
+				<div className="ouput"> {this.state.headers} {this.state.result}</div>
+				{/* <div className="ouput"></div> */}
 			</>
 		);
 	}
