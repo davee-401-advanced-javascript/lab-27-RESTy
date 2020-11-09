@@ -9,32 +9,17 @@ class Form extends React.Component {
 		super(props);
 		this.state = {
 			url: '',
-			method: 'get',
-			result: '',
-			headers: ''
+			method: 'get'
 		};
 	}
 
-	// async componentDidMount() {
-	// 	const response = await superagent.get(`${this.state.url}`);
-	// 	const result = response.body;
-
-	// 	console.log(result);
-	// 	this.setState({ output: result });
-	// }
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
 		
 		let response = await superagent.get(`${this.state.url}`);
 
-		let resultString = JSON.stringify(response.body);
-		let headersString = JSON.stringify(response.headers);
-		this.setState({
-			result: resultString,
-			headers: headersString
-		});
-		console.log(this.state);
+		this.props.update(response.headers, response.body.count, response.body.results);
 	};
 
 	handleUrlChange = (e) => {
@@ -44,7 +29,6 @@ class Form extends React.Component {
 
 	handleMethod = (e) => {
 		const method = e.target.value;
-		console.log('method: ', method);
 		this.setState({ method: method });
 	};
 
@@ -94,8 +78,7 @@ class Form extends React.Component {
 						<span>DELETE</span>
 					</label>
 				</form>
-				<div className="ouput"> {this.state.headers} {this.state.result}</div>
-				{/* <div className="ouput"></div> */}
+
 			</>
 		);
 	}
