@@ -1,10 +1,12 @@
 {
   "name": "create-react-app-davee",
+  "homepage": "https://dirrbick.github.io/lab-27-RESTy/",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -19,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
