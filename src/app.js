@@ -11,11 +11,16 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			submit: false,
 			headers: '',
 			count: 0,
 			results: [],
 		};
 	};
+
+	changeSubmit = () => {
+		this.setState({ submit: true });
+	}
 
 	update = (newHeaders, newCount, newResult) => {
 		this.setState({
@@ -30,8 +35,8 @@ class App extends React.Component {
 		return (
 			<>
 				<Header />
-				<Form update={this.update}/>
-				<Result headers={this.state.headers} count={this.state.count} results={this.state.results}/>
+				<Form changeSubmit={this.changeSubmit} update={this.update}/>
+				{this.state.submit ? <Result submit={this.state.submit} headers={this.state.headers} count={this.state.count} results={this.state.results}/> : ''};
 				<Footer />
 			</>
 		);

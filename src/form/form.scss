@@ -4,6 +4,11 @@ form {
   height: 10rem;
   margin: 2rem auto;
   padding: 2rem;
+  
+  
+  .json-pretty {
+    background-color: white;
+  }
 }
 
 .ouput {
@@ -11,3 +16,4 @@ form {
   margin: 2rem;
   border: solid 1px gray;
 }
+

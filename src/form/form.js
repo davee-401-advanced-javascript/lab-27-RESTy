@@ -20,6 +20,7 @@ class Form extends React.Component {
 		let response = await superagent.get(`${this.state.url}`);
 
 		this.props.update(response.headers, response.body.count, response.body.results);
+		this.props.changeSubmit();
 	};
 
 	handleUrlChange = (e) => {
@@ -35,6 +36,8 @@ class Form extends React.Component {
 	render() {
 		return (
 			<>
+			<main>
+				
 				<form onSubmit={this.handleSubmit}>
 					URL
 					<input name="url" required onChange={this.handleUrlChange} />
@@ -78,7 +81,8 @@ class Form extends React.Component {
 						<span>DELETE</span>
 					</label>
 				</form>
-
+			</main>
+				{/* <div className="ouput"></div> */}
 			</>
 		);
 	}
