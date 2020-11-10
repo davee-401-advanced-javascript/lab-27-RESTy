@@ -1,5 +1,7 @@
 import React from 'react';
 import superagent from 'superagent';
+import JSONPretty from 'react-json-pretty';
+let JSONPrettyMon = require('react-json-pretty/themes/monikai.css');
 
 import './form.scss';
 
@@ -51,6 +53,8 @@ class Form extends React.Component {
 	render() {
 		return (
 			<>
+			<main>
+				
 				<form onSubmit={this.handleSubmit}>
 					URL
 					<input name="url" required onChange={this.handleUrlChange} />
@@ -94,7 +98,16 @@ class Form extends React.Component {
 						<span>DELETE</span>
 					</label>
 				</form>
-				<div className="ouput"> {this.state.headers} {this.state.result}</div>
+				<div className="ouput">
+					<div>
+					<JSONPretty className="json-pretty" data={this.state.headers} theme={JSONPrettyMon}></JSONPretty>
+					</div>
+					<div>
+					<JSONPretty className="json-pretty" data={this.state.result} theme={JSONPrettyMon}></JSONPretty>
+					</div>
+					  {/* {this.state.result} */}
+				</div>
+			</main>
 				{/* <div className="ouput"></div> */}
 			</>
 		);
