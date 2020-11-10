@@ -9,10 +9,10 @@ class Result extends React.Component {
       <>
       <div className='results'>
         <h1>Headers</h1>
-        <p>{JSON.stringify(this.props.headers)}</p>
+        <p>HEADERS: {JSON.stringify(this.props.headers)}</p>
         <h1>Results</h1>
-        <p>{JSON.stringify(this.props.count)}</p>
-       <p>{JSON.stringify(this.props.results)}</p>
+        <p>COUNT: {JSON.stringify(this.props.count)}</p>
+       <p>RESULTS: {JSON.stringify(this.props.results)}</p>
       </div>
       </>
     )
