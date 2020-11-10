@@ -7,9 +7,13 @@ class Result extends React.Component {
   render() {
     return (
       <>
-      <div>{JSON.stringify(this.props.headers)}</div>
-      <div>{JSON.stringify(this.props.count)}</div>
-      <div>{JSON.stringify(this.props.results)}</div>
+      <div className='results'>
+        <h1>Headers</h1>
+        <p>{JSON.stringify(this.props.headers)}</p>
+        <h1>Results</h1>
+        <p>{JSON.stringify(this.props.count)}</p>
+       <p>{JSON.stringify(this.props.results)}</p>
+      </div>
       </>
     )
   }
