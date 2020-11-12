@@ -82,7 +82,6 @@ class Form extends React.Component {
 					</label>
 				</form>
 			</main>
-				{/* <div className="ouput"></div> */}
 			</>
 		);
 	}
