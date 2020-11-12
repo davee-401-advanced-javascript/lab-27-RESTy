@@ -4,7 +4,6 @@ let JSONPrettyMon = require('react-json-pretty/themes/monikai.css');
 
 import './result.scss';
 
-
 class Result extends React.Component {
 
   render() {
