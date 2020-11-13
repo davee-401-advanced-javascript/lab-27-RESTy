@@ -16,7 +16,7 @@ class Result extends React.Component {
         <h1>Results</h1>
         <div>COUNT:<JSONPretty className="json-pretty" data={JSON.stringify(this.props.count)} theme={JSONPrettyMon}></JSONPretty>
         </div>
-        <div>RESULTS:<JSONPretty className="json-pretty" data={JSON.stringify(this.props.results)} theme={JSONPrettyMon}></JSONPretty>
+        <div data-testid='results'>RESULTS:<JSONPretty className="json-pretty" data={JSON.stringify(this.props.results)} theme={JSONPrettyMon}></JSONPretty>
         </div>
       </div>
       </>

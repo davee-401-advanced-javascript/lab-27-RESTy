@@ -18,9 +18,9 @@ class Form extends React.Component {
 		e.preventDefault();
 		
 		let response = await superagent.get(`${this.state.url}`);
+		await this.props.update(response.headers, response.body.count, response.body.results);
+		await this.props.changeSubmit();
 
-		this.props.update(response.headers, response.body.count, response.body.results);
-		this.props.changeSubmit();
 	};
 
 	handleUrlChange = (e) => {
@@ -38,14 +38,15 @@ class Form extends React.Component {
 			<>
 			<main>
 				
-				<form onSubmit={this.handleSubmit}>
+				<form data-testid='urlForm' onSubmit={this.handleSubmit}>
 					URL
-					<input name="url" required onChange={this.handleUrlChange} />
+					<input data-testid='urlInput' name="url" required onChange={this.handleUrlChange} />
 					<button type="submit">GO!</button>
 					<br></br>
 					<br></br>
 					<label>
 						<input
+							data-testid='selectGet'
 							onChange={this.handleMethod}
 							type="radio"
 							name="method"
