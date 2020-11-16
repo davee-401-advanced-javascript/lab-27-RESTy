@@ -27,6 +27,7 @@ class App extends React.Component {
 		this.setState({
 			formInput: userInput,
 			fetching: true,
+			initial: false
 		});
 
 		let response = await request(userInput.method, userInput.url);
@@ -41,7 +42,6 @@ class App extends React.Component {
 		
 		this.setState({
 			results: response || {},
-			initial: false,
 			fetching: false,
 			history: updateHistory
 		});
@@ -50,7 +50,6 @@ class App extends React.Component {
 
 	
 	render() {
-		console.log('this.state:', this.state);
 		return (
 			<>
 				<Header />
