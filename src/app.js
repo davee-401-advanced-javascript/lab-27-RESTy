@@ -39,6 +39,8 @@ class App extends React.Component {
 			results: response, 
 		}
 		let updateHistory = [...this.state.history, currentData];
+
+		localStorage.setItem('queryHistory', JSON.stringify(updateHistory));
 		
 		this.setState({
 			results: response || {},
@@ -48,6 +50,10 @@ class App extends React.Component {
 
 	}
 
+	componentDidMount() {
+		let history = JSON.parse(localStorage.getItem('queryHistory')) ||[];
+		this.setState({history})
+	}
 	
 	render() {
 		return (
