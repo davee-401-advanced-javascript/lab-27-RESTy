@@ -31,21 +31,21 @@ class App extends React.Component {
 
 		let response = await request(userInput.method, userInput.url);
 
+		let currentData = {
+			method: userInput.method,
+			url: userInput.url,
+			params: userInput.params,
+			results: response, 
+		}
+		let updateHistory = [...this.state.history, currentData];
+		
 		this.setState({
 			results: response || {},
 			initial: false,
-			fetching: false
+			fetching: false,
+			history: updateHistory
 		});
 
-		let current = {
-			method: this.state.formInput.method,
-			url: this.state.formInput.url,
-			params: this.state.formInput.params,
-			results: this.state.results, 
-		}
-
-		let history = [...this.state.history, current];
-		this.setState({history});
 	}
 
 	
