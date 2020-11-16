@@ -1,6 +1,7 @@
 import React from 'react';
 import JSONPretty from 'react-json-pretty';
 let monikai = require('react-json-pretty/themes/monikai.css');
+import { If, Then, Else, When, Unless, Switch, Case, Default } from 'react-if';
 
 import './result.scss';
 
