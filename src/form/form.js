@@ -5,47 +5,54 @@ import './form.scss';
 
 
 class Form extends React.Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = {
 			url: '',
-			method: 'get'
+			method: 'get',
+			params: ''
 		};
 	}
 
 
-	handleSubmit = async (e) => {
+	handleSubmit = (e) => {
 		e.preventDefault();
-		
-		let response = await superagent.get(`${this.state.url}`);
-
-		this.props.update(response.headers, response.body.count, response.body.results);
-		this.props.changeSubmit();
+		this.props.getData({...this.state});
 	};
+
 
 	handleUrlChange = (e) => {
 		const url = e.target.value;
 		this.setState({ url: url });
 	};
 
+
 	handleMethod = (e) => {
 		const method = e.target.value;
 		this.setState({ method: method });
 	};
+
+	handleParams = (e) => {
+		const params = e.target.value;
+		this.setState({params})
+	}
+
 
 	render() {
 		return (
 			<>
 			<main>
 				
-				<form onSubmit={this.handleSubmit}>
+				<form data-testid='urlForm' onSubmit={this.handleSubmit}>
 					URL
-					<input name="url" required onChange={this.handleUrlChange} />
+					<input data-testid='urlInput' name="url" required onChange={this.handleUrlChange} />
 					<button type="submit">GO!</button>
 					<br></br>
 					<br></br>
 					<label>
 						<input
+							data-testid='selectGet'
 							onChange={this.handleMethod}
 							type="radio"
 							name="method"
@@ -80,9 +87,10 @@ class Form extends React.Component {
 						/>
 						<span>DELETE</span>
 					</label>
+					<br></br>
+					<input name='params' onChange={this.handleParams} accept="application/JSON"/>
 				</form>
 			</main>
-				{/* <div className="ouput"></div> */}
 			</>
 		);
 	}
