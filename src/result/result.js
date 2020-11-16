@@ -1,36 +1,22 @@
 import React from 'react';
 import JSONPretty from 'react-json-pretty';
-let JSONPrettyMon = require('react-json-pretty/themes/monikai.css');
+let monikai = require('react-json-pretty/themes/monikai.css');
+import { If, Then, Else, When, Unless, Switch, Case, Default } from 'react-if';
 
 import './result.scss';
 
-/*
-				<div className="ouput">
-					<div>
-					<JSONPretty className="json-pretty" data={this.state.headers} theme={JSONPrettyMon}></JSONPretty>
-					</div>
-					<div>
-					<JSONPretty className="json-pretty" data={this.state.result} theme={JSONPrettyMon}></JSONPretty>
-					</div>
-					  {{this.state.result}}
-        </div>
-*/
-
 class Result extends React.Component {
+
 
   render() {
     return (
       <>
 
-
       <div className='results'>
         <h1>Headers</h1>
-        <JSONPretty className="json-pretty" data={JSON.stringify(this.props.headers)} theme={JSONPrettyMon}></JSONPretty>
+        <JSONPretty className="json-pretty" data={this.props.headers} theme={monikai}></JSONPretty>
         <h1>Results</h1>
-        <div>COUNT:<JSONPretty className="json-pretty" data={JSON.stringify(this.props.count)} theme={JSONPrettyMon}></JSONPretty>
-</div>
-       <div>RESULTS:<JSONPretty className="json-pretty" data={JSON.stringify(this.props.results)} theme={JSONPrettyMon}></JSONPretty>
-</div>
+        <JSONPretty className="json-pretty" data={this.props.results} theme={monikai}></JSONPretty>
       </div>
       </>
     )
