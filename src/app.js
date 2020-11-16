@@ -11,14 +11,15 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			submit: false,
+			fetching: false,
 			headers: '',
 			results: [],
+			history: {}
 		};
 	};
 
-	changeSubmit = () => {
-		this.setState({ submit: true });
+	changefetching = () => {
+		this.setState({ fetching: true });
 	}
 
 	update = (newHeaders, newResult) => {
@@ -33,8 +34,8 @@ class App extends React.Component {
 		return (
 			<>
 				<Header />
-				<Form changeSubmit={this.changeSubmit} update={this.update}/>
-				{this.state.submit ? <Result submit={this.state.submit} headers={this.state.headers} count={this.state.count} results={this.state.results}/> : ''};
+				<Form changefetching={this.changefetching} update={this.update}/>
+				{this.state.fetching ? <Result fetching={this.state.fetching} headers={this.state.headers} count={this.state.count} results={this.state.results}/> : ''};
 				<Footer />
 			</>
 		);

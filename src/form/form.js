@@ -19,7 +19,7 @@ class Form extends React.Component {
 		
 		let response = await superagent.get(`${this.state.url}`);
 		this.props.update(response.headers, response.body);
-		this.props.changeSubmit();
+		this.props.changefetching();
 
 	};
 
