@@ -1,7 +1,6 @@
 import React from 'react';
-import JSONPretty from 'react-json-pretty';
-let monikai = require('react-json-pretty/themes/monikai.css');
 import { If, Then, Else, When, Unless, Switch, Case, Default } from 'react-if';
+import ReactJson from 'react-json-view';
 
 import './result.scss';
 
@@ -11,12 +10,11 @@ class Result extends React.Component {
   render() {
     return (
       <>
-
       <div className='results'>
         <h1>Headers</h1>
-        <JSONPretty className="json-pretty" data={this.props.headers} theme={monikai}></JSONPretty>
+        <ReactJson className="json-pretty" src={this.props.headers} />
         <h1>Results</h1>
-        <JSONPretty className="json-pretty" data={this.props.results} theme={monikai}></JSONPretty>
+        <div><ReactJson className="json-pretty" src={this.props.results} /></div>
       </div>
       </>
     )

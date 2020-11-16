@@ -46,11 +46,11 @@ class Form extends React.Component {
 				
 				<form data-testid='urlForm' onSubmit={this.handleSubmit}>
 					URL
-					<input data-testid='urlInput' name="url" required onChange={this.handleUrlChange} />
+					<input data-testid='urlInput' className="url-input" name="url" required onChange={this.handleUrlChange} />
 					<button type="submit">GO!</button>
 					<br></br>
 					<br></br>
-					<label>
+					<div className="radio">
 						<input
 							data-testid='selectGet'
 							onChange={this.handleMethod}
@@ -58,27 +58,21 @@ class Form extends React.Component {
 							name="method"
 							value="get"
 						/>
-						<span>GET</span>
-					</label>
-					<label>
+						<label>GET</label>
 						<input
 							onChange={this.handleMethod}
 							type="radio"
 							name="method"
 							value="post"
 						/>
-						<span>POST</span>
-					</label>
-					<label>
+						<label>POST</label>
 						<input
 							onChange={this.handleMethod}
 							type="radio"
 							name="method"
 							value="put"
 						/>
-						<span>PUT</span>
-					</label>
-					<label>
+						<label>PUT</label>
 						<input
 							onChange={this.handleMethod}
 							type="radio"
@@ -86,8 +80,8 @@ class Form extends React.Component {
 							value="delete"
 						/>
 						<span>DELETE</span>
-					</label>
 					<br></br>
+				</div>
 					<input name='params' onChange={this.handleParams} accept="application/JSON"/>
 				</form>
 			</main>
