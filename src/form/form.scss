@@ -1,19 +1,38 @@
 form {
-  border: 1px solid gray;
   width: 90%;
-  height: 10rem;
-  margin: 2rem auto;
-  padding: 2rem;
-  
-  
-  .json-pretty {
-    background-color: white;
+  height: 5rem;
+  margin: 0;
+  padding: 0;
+
+  .url-input {
+    width: 75%;
   }
+  
+  
+  input[type="radio"] {
+    display: none;
+    height: 1px;
+    margin: 5px;
+    width: 1px;
+  }
+    .method {
+      background: gray;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: .5rem;
+      padding: 0 1rem;
+      line-height: 2rem;
+      height: 2rem;
+    }
+
+    .method:hover, .method:true {
+      background: #ccc;
+    }
+
+  
+  
+
 }
 
-.ouput {
-  height: 50vh;
-  margin: 2rem;
-  border: solid 1px gray;
-}
 
