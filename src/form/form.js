@@ -18,8 +18,8 @@ class Form extends React.Component {
 		e.preventDefault();
 		
 		let response = await superagent.get(`${this.state.url}`);
-		await this.props.update(response.headers, response.body.count, response.body.results);
-		await this.props.changeSubmit();
+		this.props.update(response.headers, response.body);
+		this.props.changeSubmit();
 
 	};
 

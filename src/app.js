@@ -13,7 +13,6 @@ class App extends React.Component {
 		this.state = {
 			submit: false,
 			headers: '',
-			count: 0,
 			results: [],
 		};
 	};
@@ -22,10 +21,9 @@ class App extends React.Component {
 		this.setState({ submit: true });
 	}
 
-	update = (newHeaders, newCount, newResult) => {
+	update = (newHeaders, newResult) => {
 		this.setState({
 			headers: newHeaders, 
-			count: newCount,
 			results: newResult,
 		});
 	}
