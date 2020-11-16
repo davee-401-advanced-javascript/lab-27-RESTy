@@ -5,49 +5,58 @@ import './form.scss';
 
 
 class Form extends React.Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = {
 			url: '',
-			method: 'get'
+			method: 'get',
+			params: ''
 		};
 	}
 
 
-	handleSubmit = async (e) => {
+	handleSubmit = (e) => {
 		e.preventDefault();
-		
-		let response = await superagent.get(`${this.state.url}`);
-
-		this.props.update(response.headers, response.body.count, response.body.results);
-		this.props.changeSubmit();
+		this.props.getData({...this.state});
 	};
+
 
 	handleUrlChange = (e) => {
 		const url = e.target.value;
 		this.setState({ url: url });
 	};
 
+
 	handleMethod = (e) => {
 		const method = e.target.value;
 		this.setState({ method: method });
 	};
+
+	handleParams = (e) => {
+		const params = e.target.value;
+		this.setState({params})
+	}
+
 
 	render() {
 		return (
 			<>
 			<main>
 				
-				<form onSubmit={this.handleSubmit}>
-					<input className="url-input" name="url" required onChange={this.handleUrlChange} />
+				<form data-testid='urlForm' onSubmit={this.handleSubmit}>
+					URL
+					<input data-testid='urlInput' className="url-input" name="url" required onChange={this.handleUrlChange} />
+					<button type="submit">GO!</button>
 					<br></br>
 					<br></br>
 					<div className="radio">
 						<input
-								onChange={this.handleMethod}
-								type="radio"
-								name="method"
-								value="get"
+							data-testid='selectGet'
+							onChange={this.handleMethod}
+							type="radio"
+							name="method"
+							value="get"
 						/>
 						<label>GET</label>
 						<input
@@ -70,9 +79,10 @@ class Form extends React.Component {
 							name="method"
 							value="delete"
 						/>
-						<label>DELETE</label>
-						<button type="submit">GO!</button>
-					</div>
+						<span>DELETE</span>
+					<br></br>
+				</div>
+					<input name='params' onChange={this.handleParams} accept="application/JSON"/>
 				</form>
 			</main>
 			</>
