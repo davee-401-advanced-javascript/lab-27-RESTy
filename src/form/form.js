@@ -5,6 +5,7 @@ import './form.scss';
 
 
 class Form extends React.Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,24 +15,23 @@ class Form extends React.Component {
 	}
 
 
-	handleSubmit = async (e) => {
+	handleSubmit = (e) => {
 		e.preventDefault();
-		
-		let response = await superagent.get(`${this.state.url}`);
-		this.props.update(response.headers, response.body);
-		this.props.changefetching();
-
+		this.props.getData({...this.state});
 	};
+
 
 	handleUrlChange = (e) => {
 		const url = e.target.value;
 		this.setState({ url: url });
 	};
 
+
 	handleMethod = (e) => {
 		const method = e.target.value;
 		this.setState({ method: method });
 	};
+
 
 	render() {
 		return (
