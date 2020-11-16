@@ -6,6 +6,7 @@ import './styles.scss';
 
 import Header from './header/header.js';
 import Form from './form/form.js';
+import History from './history/history.js';
 import Result from './result/result.js';
 import Footer from './footer/footer.js';
 import request from 'superagent';
@@ -45,7 +46,7 @@ class App extends React.Component {
 			<>
 				<Header />
 				<Form getData={this.getData}/>
-
+				<History />
 				<When condition={!this.state.initial}>
 					<If condition={this.state.fetching}>
 						<Then>
