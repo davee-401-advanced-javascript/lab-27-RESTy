@@ -6,6 +6,7 @@ import './result.scss';
 
 class Result extends React.Component {
 
+
   render() {
     return (
       <>
