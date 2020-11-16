@@ -10,7 +10,8 @@ class Form extends React.Component {
 		super(props);
 		this.state = {
 			url: '',
-			method: 'get'
+			method: 'get',
+			params: ''
 		};
 	}
 
@@ -31,6 +32,11 @@ class Form extends React.Component {
 		const method = e.target.value;
 		this.setState({ method: method });
 	};
+
+	handleParams = (e) => {
+		const params = e.target.value;
+		this.setState({params})
+	}
 
 
 	render() {
@@ -81,6 +87,8 @@ class Form extends React.Component {
 						/>
 						<span>DELETE</span>
 					</label>
+					<br></br>
+					<input name='params' onChange={this.handleParams} accept="application/JSON"/>
 				</form>
 			</main>
 			</>

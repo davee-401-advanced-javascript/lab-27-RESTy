@@ -19,7 +19,7 @@ class App extends React.Component {
 			fetching: false,
 			formInput: {},
 			results: {},
-			history: {}
+			history: []
 		};
 	};
 
@@ -37,6 +37,15 @@ class App extends React.Component {
 			fetching: false
 		});
 
+		let current = {
+			method: this.state.formInput.method,
+			url: this.state.formInput.url,
+			params: this.state.formInput.params,
+			results: this.state.results, 
+		}
+
+		let history = [...this.state.history, current];
+		this.setState({history});
 	}
 
 	
@@ -46,7 +55,7 @@ class App extends React.Component {
 			<>
 				<Header />
 				<Form getData={this.getData}/>
-				<History />
+				<History history={this.state.history}/>
 				<When condition={!this.state.initial}>
 					<If condition={this.state.fetching}>
 						<Then>
