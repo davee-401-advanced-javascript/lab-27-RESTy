@@ -34,10 +34,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<>
-				<Header />
-				<Form changeSubmit={this.changeSubmit} update={this.update}/>
-				{this.state.submit ? <Result submit={this.state.submit} headers={this.state.headers} count={this.state.count} results={this.state.results}/> : ''};
-				<Footer />
+			<Header />
+			<Form changeSubmit={this.changeSubmit} update={this.update}/>
+			{this.state.submit ? <Result submit={this.state.submit} headers={this.state.headers} count={this.state.count} results={this.state.results}/> : <div className="results"></div> };
+			<Footer />
 			</>
 		);
 	}

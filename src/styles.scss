@@ -1,3 +1,5 @@
+$background: #EEEEEE;
+
 * {
   box-sizing: border-box;
 }
@@ -7,10 +9,12 @@ body, html {
 
 }
 body {
+  font-family: sans-serif;
   display: flex;
   height: 100%;
   margin: 0px;
   padding: 0px;
+  background-color: $background;
 
   #root{
     display: flex;
