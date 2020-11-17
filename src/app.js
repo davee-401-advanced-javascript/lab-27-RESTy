@@ -72,14 +72,7 @@ class App extends React.Component {
 						<main>
 							<History history={this.state.history}/>
 							<When condition={!this.state.initial}>
-								<If condition={this.state.fetching}>
-									<Then>
-										<h1>Grabbing Data</h1>
-									</Then>
-									<Else>
-										<Result headers={this.state.results.headers} results={this.state.results.body}/>
-									</Else>
-								</If>
+								<Result fetching={this.state.fetching} headers={this.state.results.headers} results={this.state.results.body}/>
 							</When>
 						</main>
 					</Route>
