@@ -1,22 +1,32 @@
 form {
   width: 90%;
   height: 5rem;
-  margin: 0;
+  margin: 2rem;
   padding: 0;
 
-  .url-input {
+  input[type=text] {
+    background: #f2f2f2;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
     width: 75%;
+
+    &.focus {
+      background: #ffffee;
+      border-bottom: 2px ridge blue;
+    }
   }
   
   
   input[type="radio"] {
     display: none;
-    height: 1px;
+    height: 3px;
     margin: 5px;
     width: 1px;
   }
-    .method {
-      background: gray;
+    
+  .method {
+      background: rgb(190, 190, 190);
       border: 1px solid #ccc;
       border-radius: 5px;
       cursor: pointer;
@@ -24,10 +34,10 @@ form {
       padding: 0 1rem;
       line-height: 2rem;
       height: 2rem;
-    }
-
-    .method:hover, .method:true {
-      background: #ccc;
+      
+      &:hover, &.true {
+        background: rgba(218, 218, 218, 0.418);
+      }
     }
 
   
