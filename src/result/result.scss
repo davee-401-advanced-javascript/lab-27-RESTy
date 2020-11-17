@@ -8,7 +8,7 @@ div {
     flex-direction: column;
     justify-content: flex-end;
     border: 1px solid #D8D8D8;
-    width: 50%;
+    width: 45%;
     height: auto;
     background-color: $results-background;
     margin: 2rem auto;
@@ -16,10 +16,6 @@ div {
     margin-bottom: 10rem;
   }
   
-  .__json-pretty__ {
-    background-color: $results-background;
-  }
-
   
 }
 

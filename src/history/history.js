@@ -8,9 +8,12 @@ class History extends React.Component {
     return (
       <>
         <div className='history'>
-          <h2>this is history for now</h2>
           <ul>
-            {this.props.history.map(item => <li key={Math.random}>{`${item.method} ${item.url}`}</li>
+            {this.props.history.map(item => 
+              <li key={Math.random}>
+                <span className={`method ${item.method}`}>{`${item.method}`}</span>
+                <button className='url-history'>{`${item.url}`}</button>
+              </li>
             )}
           </ul>
         </div>

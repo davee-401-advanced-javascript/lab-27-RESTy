@@ -24,29 +24,31 @@ class App extends React.Component {
 	};
 
 	getData = async (userInput) => {
-		this.setState({
-			formInput: userInput,
-			fetching: true,
-			initial: false
-		});
-
-		let response = await request(userInput.method, userInput.url);
-
-		let currentData = {
-			method: userInput.method,
-			url: userInput.url,
-			params: userInput.params,
-			results: response, 
-		}
-		let updateHistory = [...this.state.history, currentData];
-
-		localStorage.setItem('queryHistory', JSON.stringify(updateHistory));
-		
-		this.setState({
-			results: response || {},
-			fetching: false,
-			history: updateHistory
-		});
+		try {
+			this.setState({
+				formInput: userInput,
+				fetching: true,
+				initial: false
+			});
+	
+			let response = await request(userInput.method, userInput.url);
+	
+			let currentData = {
+				method: userInput.method,
+				url: userInput.url,
+				params: userInput.params,
+				results: response, 
+			}
+			let updateHistory = [...this.state.history, currentData];
+	
+			localStorage.setItem('queryHistory', JSON.stringify(updateHistory));
+			
+			this.setState({
+				results: response || {},
+				fetching: false,
+				history: updateHistory
+			});
+		} catch(e) {	}
 
 	}
 
@@ -60,17 +62,19 @@ class App extends React.Component {
 			<>
 				<Header />
 				<Form getData={this.getData}/>
-				<History history={this.state.history}/>
-				<When condition={!this.state.initial}>
-					<If condition={this.state.fetching}>
-						<Then>
-							<h1>Grabbing Data</h1>
-						</Then>
-						<Else>
-							<Result headers={this.state.results.headers} results={this.state.results.body}/>
-						</Else>
-					</If>
-				</When>
+				<main>
+					<History history={this.state.history}/>
+					<When condition={!this.state.initial}>
+						<If condition={this.state.fetching}>
+							<Then>
+								<h1>Grabbing Data</h1>
+							</Then>
+							<Else>
+								<Result headers={this.state.results.headers} results={this.state.results.body}/>
+							</Else>
+						</If>
+					</When>
+				</main>
 
 				<Footer />
 			</>
