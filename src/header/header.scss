@@ -1,7 +1,16 @@
 header {
-  background-color: #293E60;
-  color: #BEC3CD;
+  background-color: #293e60;
+  color: #bec3cd;
   height: 8rem;
+
+  nav ul {
+    display: flex;
+    list-style-type: none;
+
+    li {
+      margin-left: 3rem;
+    }
+  }
 }
 
 h1 {

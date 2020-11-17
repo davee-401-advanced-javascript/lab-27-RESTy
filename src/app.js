@@ -65,11 +65,11 @@ class App extends React.Component {
 			<>
 				<Header />
 				<SwitchRoute>
-					<Route exact path='/help' component={HelpPage}/>
 					<Route exact path='/history' component={HistoryPage}/>
+					<Route exact path='/help' component={HelpPage}/>
 					<Route>
+						<Form getData={this.getData}/>
 						<main>
-							<Form getData={this.getData}/>
 							<History history={this.state.history}/>
 							<When condition={!this.state.initial}>
 								<If condition={this.state.fetching}>
