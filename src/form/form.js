@@ -30,7 +30,6 @@ class Form extends React.Component {
 
 	handleMethod = (method) => {
 		this.setState({ method: method });
-		console.log(this.state)
 	};
 
 	handleParams = (e) => {
@@ -40,6 +39,7 @@ class Form extends React.Component {
 
 
 	render() {
+		console.log('form state:', this.state);
 		return (
 			<>			
 				<form data-testid='urlForm' onSubmit={this.handleSubmit}>
@@ -54,7 +54,7 @@ class Form extends React.Component {
 						<span className={`method ${this.state.method === 'post'}`} onClick={() => this.handleMethod('post')}>POST</span>
 						<span className={`method ${this.state.method === 'put'}`} onClick={() => this.handleMethod('put')}>PUT</span>
 						<span className={`method ${this.state.method === 'delete'}`} onClick={() => this.handleMethod('delete')}>DELETE</span>
-						<input name='params' onChange={this.handleParams} accept="application/JSON"/>
+						<textarea name='params' onChange={this.handleParams} accept="application/JSON"/>
 					</div>
 				</form>
 			</>
