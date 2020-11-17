@@ -10,7 +10,7 @@ class Form extends React.Component {
 		super(props);
 		this.state = {
 			url: '',
-			method: 'get',
+			method: '',
 			params: ''
 		};
 	}
@@ -28,9 +28,9 @@ class Form extends React.Component {
 	};
 
 
-	handleMethod = (e) => {
-		const method = e.target.value;
+	handleMethod = (method) => {
 		this.setState({ method: method });
+		console.log(this.state)
 	};
 
 	handleParams = (e) => {
@@ -41,50 +41,22 @@ class Form extends React.Component {
 
 	render() {
 		return (
-			<>
-			<main>
-				
+			<>			
 				<form data-testid='urlForm' onSubmit={this.handleSubmit}>
-					URL
-					<input data-testid='urlInput' className="url-input" name="url" required onChange={this.handleUrlChange} />
-					<button type="submit">GO!</button>
+					<div>
+						<input type="text" data-testid='urlInput' className="url-input" name="url" placeholder="Please Enter URL" required onChange={this.handleUrlChange} />
+						<button type="submit">GO!</button>
+					</div>
 					<br></br>
 					<br></br>
 					<div className="radio">
-						<input
-							data-testid='selectGet'
-							onChange={this.handleMethod}
-							type="radio"
-							name="method"
-							value="get"
-						/>
-						<label>GET</label>
-						<input
-							onChange={this.handleMethod}
-							type="radio"
-							name="method"
-							value="post"
-						/>
-						<label>POST</label>
-						<input
-							onChange={this.handleMethod}
-							type="radio"
-							name="method"
-							value="put"
-						/>
-						<label>PUT</label>
-						<input
-							onChange={this.handleMethod}
-							type="radio"
-							name="method"
-							value="delete"
-						/>
-						<span>DELETE</span>
-					<br></br>
-				</div>
-					<input name='params' onChange={this.handleParams} accept="application/JSON"/>
+						<span className={`method ${this.state.method === 'get'}`} onClick={() => this.handleMethod('get')}>GET</span>
+						<span className={`method ${this.state.method === 'post'}`} onClick={() => this.handleMethod('post')}>POST</span>
+						<span className={`method ${this.state.method === 'put'}`} onClick={() => this.handleMethod('put')}>PUT</span>
+						<span className={`method ${this.state.method === 'delete'}`} onClick={() => this.handleMethod('delete')}>DELETE</span>
+						<input name='params' onChange={this.handleParams} accept="application/JSON"/>
+					</div>
 				</form>
-			</main>
 			</>
 		);
 	}
